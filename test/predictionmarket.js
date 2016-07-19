@@ -18,7 +18,7 @@ contract('PredictionMarket', function(accounts) {
 
     it("should instantiate with an administrator account", function(done) {
       PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.administrator.call().then(function(admin) {
+        predictionMarketInstance.admin.call().then(function(admin) {
           assert.equal(admin, accounts[0], "Admin check doesn't match");
           done();
         });
@@ -33,15 +33,11 @@ contract('PredictionMarket', function(accounts) {
         });
       });
     });
-
-    it("should have a list of administrator accounts", function(done) {
-      PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.adminRegister.call().then(function(admins) {
-          assert.equal(admins["owner"], accounts[0], "There are no admins in the registry or the registered admins don't match");
-          done();
-        });
-      });
-    });
   });
 
+  describe("#isAdmin?", function() {
+    it("should return whether an address is an admin", function(done) {
+
+    });
+  });
 })

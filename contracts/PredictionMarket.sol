@@ -1,9 +1,9 @@
 contract PredictionMarket {
-  address public administrator;
+  address public admin;
   uint public numMarkets;
 
   function PredictionMarket() {
-    administrator = msg.sender;
+    admin = msg.sender;
     numMarkets = 0;
   }
 }

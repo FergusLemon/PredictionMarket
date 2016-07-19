@@ -5,10 +5,10 @@
 (function() {
 
   var contract_data = {
-    abi: [{"constant":true,"inputs":[],"name":"numMarkets","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"administrator","outputs":[{"name":"","type":"address"}],"type":"function"},{"inputs":[],"type":"constructor"}],
-    binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f53d0a8e14602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
-    unlinked_binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f53d0a8e14602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
-    address: "0x967d58aad85af0a43b0343d1fdc9598339791fed",
+    abi: [{"constant":true,"inputs":[],"name":"numMarkets","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"admin","outputs":[{"name":"","type":"address"}],"type":"function"},{"inputs":[],"type":"constructor"}],
+    binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f851a44014602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
+    unlinked_binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f851a44014602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
+    address: "0x3cf62ff3d4ddb7ea71c9ab29a13dd81afeea0536",
     generated_with: "2.0.9",
     contract_name: "PredictionMarket"
   };
