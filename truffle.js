@@ -10,7 +10,6 @@ module.exports = {
     "images/": "images/"
   },
   deploy: [
-    "ConvertLib",
     "PredictionMarket"
   ],
   rpc: {
