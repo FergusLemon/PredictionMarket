@@ -14,6 +14,7 @@ contract('PredictionMarket', function(accounts) {
   describe("instantiation of new instance", function() {
     beforeEach("create a new instance", function() {
       var predictionMarket = PredictionMarket.at(PredictionMarket.deployed_address);
+      var predictionMarketInstance = PredictionMarket.new();
     });
 
     it("should instantiate with an administrator account", function(done) {
@@ -35,9 +36,15 @@ contract('PredictionMarket', function(accounts) {
     });
   });
 
-  describe("#isAdmin?", function() {
+  describe("#isAdmin", function() {
     it("should return whether an address is an admin", function(done) {
-
+      PredictionMarket.new().then(function(predictionMarketInstance) {
+      predictionMarketInstance.admin.call().then(function(admin) {
+        admin.isAdmin().call().then(function(response) {
+          assert.equal(response, true, "This user is not an admin");
+          });
+        });
+      });
     });
   });
 })

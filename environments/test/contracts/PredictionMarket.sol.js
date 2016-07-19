@@ -8,7 +8,7 @@
     abi: [{"constant":true,"inputs":[],"name":"numMarkets","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"admin","outputs":[{"name":"","type":"address"}],"type":"function"},{"inputs":[],"type":"constructor"}],
     binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f851a44014602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
     unlinked_binary: "606060405260008054600160a060020a0319163317815560015560548060256000396000f3606060405260e060020a600035046326e04f9d81146024578063f851a44014602c575b005b604a60015481565b604a60005473ffffffffffffffffffffffffffffffffffffffff1681565b6060908152602090f3",
-    address: "0x3cf62ff3d4ddb7ea71c9ab29a13dd81afeea0536",
+    address: "0x4e4cdfc24ad5077a58fbe45c7af31637400f44eb",
     generated_with: "2.0.9",
     contract_name: "PredictionMarket"
   };
