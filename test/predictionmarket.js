@@ -33,6 +33,15 @@ contract('PredictionMarket', function(accounts) {
         });
       });
     });
+
+    it("should have a list of administrator accounts", function(done) {
+      PredictionMarket.new().then(function(predictionMarketInstance) {
+        predictionMarketInstance.adminRegister.call().then(function(admins) {
+          assert.equal(admins["owner"], accounts[0], "There are no admins in the registry or the registered admins don't match");
+          done();
+        });
+      });
+    });
   });
 
 })
