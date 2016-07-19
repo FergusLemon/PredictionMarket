@@ -38,8 +38,11 @@ contract('PredictionMarket', function(accounts) {
   describe("#createMarket", function() {
     it("should create a new market", function(done) {
       PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.createMarket({ from: accounts[0] }).then(function(numMarkets) {
+        predictionMarketInstance.createMarket({ from: accounts[0] }).then(function() {
+          return predictionMarketInstance.numMarkets.call().then(function(numMarkets) {
           assert.equal(numMarkets, 1, "There are more or less than 1 live market");
+          done();
+          });
         });
       });
     });

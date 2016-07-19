@@ -13,4 +13,8 @@ contract PredictionMarket {
     }
     _
   }
+
+  function createMarket() returns (uint marketID) {
+    marketID = numMarkets++;
+  }
 }
