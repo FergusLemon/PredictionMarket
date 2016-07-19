@@ -6,4 +6,11 @@ contract PredictionMarket {
     admin = msg.sender;
     numMarkets = 0;
   }
+
+  modifier isAdmin() {
+    if (msg.sender != admin) {
+      throw;
+    }
+    _
+  }
 }
