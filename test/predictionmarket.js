@@ -21,4 +21,14 @@ contract('PredictionMarket', function(accounts) {
     });
   });
 
+  it("should instantiate with zero available markets", function(done) {
+    var predictionMarket = PredictionMarket.at(PredictionMarket.deployed_address);
+    PredictionMarket.new().then(function(predictionMarketInstance) {
+      predictionMarketInstance.markets.call().then(function(markets) {
+        assert.equal(markets, 0, "There appear to be markets available");
+        done();
+      });
+    });
+  });
+
 })
