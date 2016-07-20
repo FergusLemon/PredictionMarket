@@ -1,4 +1,7 @@
 contract('PredictionMarket', function(accounts) {
+
+  console.log(accounts);
+
   it("should assert true", function(done) {
     var predictionMarket = PredictionMarket.at(PredictionMarket.deployed_address);
     assert.isTrue(true);
@@ -40,7 +43,20 @@ contract('PredictionMarket', function(accounts) {
       PredictionMarket.new().then(function(predictionMarketInstance) {
         predictionMarketInstance.createMarket({ from: accounts[0] }).then(function() {
           return predictionMarketInstance.numMarkets.call().then(function(numMarkets) {
-          assert.equal(numMarkets, 1, "There are more or less than 1 live market");
+          console.log(numMarkets);
+          assert.equal(numMarkets, 1, "No live market created");
+          done();
+          });
+        });
+      });
+    });
+
+    it("should only be called by an admin", function(done) {
+      PredictionMarket.new().then(function(predictionMarketInstance) {
+        predictionMarketInstance.createMarket({ from: accounts[1] }).then(function() {
+          return predictionMarketInstance.numMarkets.call().then(function(numMarkets) {
+            console.log(numMarkets);
+          assert.equal(numMarkets, 0, "A non-admin can create markets!");
           done();
           });
         });
