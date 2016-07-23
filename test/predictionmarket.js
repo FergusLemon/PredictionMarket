@@ -19,42 +19,38 @@ contract('PredictionMarket', function(accounts) {
       var predictionMarket = PredictionMarket.at(PredictionMarket.deployed_address);
     });
 
-    it("should instantiate with an administrator account", function(done) {
-      PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.admin.call().then(function(admin) {
-          assert.equal(admin, accounts[0], "Admin check doesn't match");
-          done();
-        });
-      });
+    it("should instantiate with an administrator account", function() {
+      return PredictionMarket.new()
+      .then(predictionMarketInstance => predictionMarketInstance.admin.call())
+      .then(value => {
+        assert.equal(value, accounts[0], "Admin check doesn't match")
+      })
     });
 
-    it("should instantiate with zero available markets", function(done) {
-      PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.numMarkets.call().then(function(markets) {
-          assert.equal(markets, 0, "There appear to be markets available");
-          done();
-        });
-      });
+    it("should instantiate with zero available markets", function() {
+      return PredictionMarket.new()
+      .then(predictionMarketInstance => predictionMarketInstance.marketCount.call())
+      .then(value => {
+        assert.equal(value, 0, "Markets are available")
+      })
     });
   });
 
   describe("#createMarket", function() {
-    it("should create a new market", function(done) {
-      PredictionMarket.new().then(function(predictionMarketInstance) {
-        predictionMarketInstance.createMarket({ from: accounts[0] }).then(function() {
-          return predictionMarketInstance.numMarkets.call().then(function(numMarkets) {
-          console.log(numMarkets);
-          assert.equal(numMarkets, 1, "No live market created");
-          done();
-          });
-        });
-      });
+
+    it("should increase the market count by 1", function() {
+      return PredictionMarket.new()
+      .then(predictionMarketInstance => predictionMarketInstance.createMarket({ from: accounts[0] }))
+      return predictionMarketInstance.marketCount.call()
+      .then(value => {
+        assert.equal(value, 1, "No market was created")
+      })
     });
 
     it("should only be called by an admin", function(done) {
       PredictionMarket.new().then(function(predictionMarketInstance) {
         predictionMarketInstance.createMarket({ from: accounts[1] }).then(function() {
-          return predictionMarketInstance.numMarkets.call().then(function(numMarkets) {
+          return predictionMarketInstance.marketCount.call().then(function(numMarkets) {
             console.log(numMarkets);
           assert.equal(numMarkets, 0, "A non-admin can create markets!");
           done();
