@@ -1,10 +1,13 @@
 contract PredictionMarket {
   address public admin;
-  uint public numMarkets;
+  uint public marketCount;
+  mapping (uint => Market) public markets;
 
   struct Market {
     string boolQuestion;
     address creator;
+    bool answer;
+    mapping (uint => User) users;
   }
 
   struct User {
@@ -15,7 +18,7 @@ contract PredictionMarket {
 
   function PredictionMarket() {
     admin = msg.sender;
-    numMarkets = 0;
+    marketCount = 0;
   }
 
   modifier isAdmin() {
@@ -26,6 +29,6 @@ contract PredictionMarket {
   }
 
   function createMarket() isAdmin() returns (uint marketID) {
-    marketID = numMarkets++;
+    marketID = marketCount++;
   }
 }
